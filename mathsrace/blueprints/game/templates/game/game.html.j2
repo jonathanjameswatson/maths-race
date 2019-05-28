@@ -1,0 +1,47 @@
+{% extends "base.html.j2" %}
+{% block title %}Maths Race{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('.static', filename='css/game.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+{% endblock %}
+
+{% block body %}
+  <div id="fullscreen" onclick="toggleFullScreen();">⛶</div>
+  <div class="overlay">
+    <p id="errorline"></p>
+
+    <div class="mainbuttons">
+      <input type="button" class="mainbutton longbutton" value="New game" onclick="newGame();" id="newgamebutton">
+    </div>
+    <div class="mainbuttons">
+      <input type="text" name="username" class="joinText" placeholder="Host name" autocomplete="off" id="hostnametextbox">
+      <input type="button" class="mainbutton" value="Join"  onclick="joinGame();" id="joinbutton">
+    </div>
+
+    <div id="hidegame" style="visibility: hidden">
+
+      <table id="playertable">
+        <tr>
+          <th id="hostname">Host name: </th>
+        </tr>
+      </table>
+
+      <div class="mainbuttons">
+        <input type="button" class="mainbutton" disabled value="Leave" onclick="leaveGameButton();" id="leave">
+        <input type="button" class="mainbutton" disabled value="Start" id="start">
+      </div>
+    </div>
+  </div>
+  <div id="gamecontainer">
+    <div id="race"></div>
+    <div id="question">
+      <div id="cardcontainer">
+        <div class="card">1</div><div class="card">+</div><div class="card">1</div><div class="card">=</div><input class="card" type="number" placeholder="__" max=999 min=0>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('game.static', filename='js/game.js') }}"></script>
+{% endblock %}

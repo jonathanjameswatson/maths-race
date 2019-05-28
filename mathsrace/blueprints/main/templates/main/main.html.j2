@@ -1,0 +1,17 @@
+{% extends "base_nav.html.j2" %}
+{% import 'main/macros.html.j2' as macros %}
+{% block title %}Maths Race{% endblock %}
+
+{% block content %}
+  <div class="centreContent">
+    <h1>Games</h1>
+    <div class="mainbuttons">
+      <a class="mainbutton" href="{{ url_for('game.index') }}">Games</a>
+    </div>
+
+    {{ macros.leaderboard(lb) }}
+
+    <h1>Friends</h1>
+    <p>Coming soon</p>
+  </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html.j2" %}
+{% block title %}Maths Race{% endblock %}
+
+{% block body %}
+  <nav><div class="centreContent">
+    <a class="navtitle" href="{{ url_for('main.index') }}">MATHS RACE</a>
+    <div class="navbuttons">
+      {% if g.user %}
+        <a class="navbutton" href="/settings" disabled>Settings</a>
+        <a class="navbutton" href="{{ url_for('auth.logout') }}">Log out</a>
+      {% else %}
+        <a class="navbutton" href="{{ url_for('auth.signup') }}">Sign up</a>
+        <a class="navbutton" href="{{ url_for('auth.login') }}">Log in</a>
+      {% endif %}
+    </div>
+  </nav></div>
+
+  <div id="content">{% block content %}{% endblock %}</div>
+{% endblock %}
